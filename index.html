@@ -256,6 +256,39 @@
             align-items: center;
             gap: 16px;
         }
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 3px;
+            gap: 2px;
+            margin-right: 4px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 5px 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            color: var(--text-main);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #070B14;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
 
         /* Buttons */
         .btn {
@@ -1186,15 +1219,19 @@
                 </a>
 
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#servicos" class="nav-link">Services</a></li>
-                    <li><a href="#tecnologias" class="nav-link">Software & FEA</a></li>
-                    <li><a href="#lideranca" class="nav-link">About</a></li>
-                    <li><a href="#publicacoes" class="nav-link">Publications</a></li>
-                    <li><a href="#contato" class="nav-link">Contact</a></li>
+                    <li><a href="#servicos" class="nav-link" data-i18n="nav_services">Services</a></li>
+                    <li><a href="#tecnologias" class="nav-link" data-i18n="nav_tech">Software & FEA</a></li>
+                    <li><a href="#lideranca" class="nav-link" data-i18n="nav_about">About</a></li>
+                    <li><a href="#publicacoes" class="nav-link" data-i18n="nav_pub">Publications</a></li>
+                    <li><a href="#contato" class="nav-link" data-i18n="nav_contact">Contact</a></li>
                 </ul>
 
                 <div class="nav-actions">
-                    <a href="#contato" class="btn btn-primary">Request Consulting</a>
+                    <div class="lang-switch" aria-label="Select Language">
+                        <button class="lang-btn" id="langEN" onclick="setLanguage('en')">EN</button>
+                        <button class="lang-btn" id="langPT" onclick="setLanguage('pt')">PT</button>
+                    </div>
+                    <a href="#contato" class="btn btn-primary" data-i18n="nav_cta">Request Consulting</a>
                     <button class="mobile-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
                 </div>
             </nav>
@@ -1209,35 +1246,35 @@
             <div>
                 <div class="hero-badge">
                     <span class="pulse"></span>
-                    <span>Specialized Offshore & Subsea Engineering</span>
+                    <span data-i18n="hero_badge">Specialized Offshore & Subsea Engineering</span>
                 </div>
 
-                <h1 class="hero-title">
+                <h1 class="hero-title" data-i18n="hero_title" data-i18n-html="true">
                     Engineering for <span>Submarine HV Cable Systems</span>
                 </h1>
 
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="hero_desc">
                     Independent technical consultancy delivering solutions in High Voltage cables
                     (HV/HVDC/MVAC), Floating Offshore Wind, multiphysics simulation, and subsea asset integrity.
                 </p>
 
                 <div class="hero-cta">
                     <a href="https://wa.me/5547996303851?text=Hello,%20I%20would%20like%20to%20request%20a%20technical%20consultation%20with%20Dreio%20Engineering."
-                        target="_blank" class="btn btn-primary">
+                        target="_blank" class="btn btn-primary" id="waBtn">
                         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.099 4.016 4.016-1.052z" />
                         </svg>
-                        Contact via WhatsApp
+                        <span data-i18n="hero_wa">Contact via WhatsApp</span>
                     </a>
-                    <a href="#servicos" class="btn btn-secondary">Explore Services</a>
+                    <a href="#servicos" class="btn btn-secondary" data-i18n="hero_explore">Explore Services</a>
                 </div>
             </div>
 
             <!-- Hero Highlights Card -->
             <div class="hero-card">
                 <div class="card-header-tag">
-                    <span>Track Record & Capabilities</span>
+                    <span data-i18n="hero_card_tag">Track Record & Capabilities</span>
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -1246,25 +1283,22 @@
                 <div class="track-record-list">
                     <div class="track-item">
                         <div class="track-content">
-                            <h4>Offshore Wind Technical Support</h4>
-                            <p>Drafting technical specifications, legal claims support, ROV & MBES survey data reviews,
-                                and CPS integrity for offshore wind farm Developers.</p>
+                            <h4 data-i18n="track1_title">Offshore Wind Technical Support</h4>
+                            <p data-i18n="track1_desc">Drafting technical specifications, legal claims support, ROV & MBES survey data reviews, and CPS integrity for offshore wind farm Developers.</p>
                         </div>
                     </div>
 
                     <div class="track-item">
                         <div class="track-content">
-                            <h4>CIGRE WG B1.63 Member (TB 862)</h4>
-                            <p>Co-authorship of international recommendations for mechanical testing of submarine cables
-                                in dynamic applications.</p>
+                            <h4 data-i18n="track2_title">CIGRE WG B1.63 Member (TB 862)</h4>
+                            <p data-i18n="track2_desc">Co-authorship of international recommendations for mechanical testing of submarine cables in dynamic applications.</p>
                         </div>
                     </div>
 
                     <div class="track-item">
                         <div class="track-content">
-                            <h4>International Track Record (Italy & Brazil)</h4>
-                            <p>Product management and R&D at Prysmian for deepwater HVDC links and subsea umbilicals.
-                            </p>
+                            <h4 data-i18n="track3_title">International Track Record (Italy & Brazil)</h4>
+                            <p data-i18n="track3_desc">Product management and R&D at Prysmian for deepwater HVDC links and subsea umbilicals.</p>
                         </div>
                     </div>
                 </div>
@@ -1274,7 +1308,7 @@
         <!-- Client Logos Banner -->
         <div class="clients-banner">
             <div class="container clients-wrapper">
-                <span class="clients-title">Experience with Industry Leaders:</span>
+                <span class="clients-title" data-i18n="clients_title">Experience with Industry Leaders:</span>
                 <div class="clients-tags">
                     <span class="client-pill">Vattenfall BA Wind</span>
                     <span class="client-pill">•</span>
@@ -1294,65 +1328,61 @@
     <section id="servicos">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Specialties</span>
-                <h2 class="section-title">Specialized Engineering Services</h2>
-                <p class="section-subtitle">Independent, technical support across the entire lifecycle of
-                    subsea power transmission and renewable assets.</p>
+                <span class="section-tag" data-i18n="services_tag">Specialties</span>
+                <h2 class="section-title" data-i18n="services_title">Specialized Engineering Services</h2>
+                <p class="section-subtitle" data-i18n="services_subtitle">Independent, technical support across the entire lifecycle of subsea power transmission and renewable assets.</p>
             </div>
 
             <div class="services-grid">
                 <!-- Service Card 1 -->
                 <div class="service-card">
-                    <h3>Submarine Cable Engineering & EPCI</h3>
-                    <p>Independent drafting and review of technical specifications for offshore EPCI tenders and
-                        contracts.</p>
+                    <h3 data-i18n="service1_title">Submarine Cable Engineering & EPCI</h3>
+                    <p data-i18n="service1_desc">Independent drafting and review of technical specifications for offshore EPCI tenders and contracts.</p>
                     <ul class="service-list">
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Independent engineering statements for in-service cables.</li>
+                            </svg> <span data-i18n="service1_l1">Independent engineering statements for in-service cables.</span></li>
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Field survey data review (ROV video footage, MBES, and monitoring data).</li>
+                            </svg> <span data-i18n="service1_l2">Field survey data review (ROV video footage, MBES, and monitoring data).</span></li>
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Contractor management for CPS re-assessment and support with Legal Claims.</li>
+                            </svg> <span data-i18n="service1_l3">Contractor management for CPS re-assessment and support with Legal Claims.</span></li>
                     </ul>
                 </div>
 
                 <!-- Service Card 2 -->
                 <div class="service-card">
-                    <h3>Advanced Multiphysics Modeling & FEA</h3>
-                    <p>Advanced numerical modeling to determine thermal, electrical, and mechanical operational limits
-                        of subsea cables and accessories.</p>
+                    <h3 data-i18n="service2_title">Advanced Multiphysics Modeling & FEA</h3>
+                    <p data-i18n="service2_desc">Advanced numerical modeling to determine thermal, electrical, and mechanical operational limits of subsea cables and accessories.</p>
                     <ul class="service-list">
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Hydrodynamic, static, and dynamic global analysis in OrcaFlex.</li>
+                            </svg> <span data-i18n="service2_l1">Hydrodynamic, static, and dynamic global analysis in OrcaFlex.</span></li>
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Coupled electromagnetic and thermal modeling in COMSOL (CIGRE TB 880).</li>
+                            </svg> <span data-i18n="service2_l2">Coupled electromagnetic and thermal modeling in COMSOL (CIGRE TB 880).</span></li>
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Finite Element Analysis (FEA) in Ansys and Abaqus for umbilicals and accessories.
+                            </svg> <span data-i18n="service2_l3">Finite Element Analysis (FEA) in Ansys and Abaqus for umbilicals and accessories.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Service Card 3 -->
                 <div class="service-card">
-                    <h3>R&D, Qualification & Floating Wind</h3>
-                    <p>Research, development, and strategic advisory for dynamic high-voltage applications in deep and
-                        ultra-deep waters.</p>
+                    <h3 data-i18n="service3_title">R&D, Qualification & Floating Wind</h3>
+                    <p data-i18n="service3_desc">Research, development, and strategic advisory for dynamic high-voltage applications in deep and ultra-deep waters.</p>
                     <ul class="service-list">
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Preliminary technical feasibility studies (Desktop Studies) for floating wind.</li>
+                            </svg> <span data-i18n="service3_l1">Preliminary technical feasibility studies (Desktop Studies) for floating wind.</span></li>
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Supplier technical qualification and factory audit processes.</li>
+                            </svg> <span data-i18n="service3_l2">Supplier technical qualification and factory audit processes.</span></li>
                         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Failure root-cause analysis and laboratory test specification.</li>
+                            </svg> <span data-i18n="service3_l3">Failure root-cause analysis and laboratory test specification.</span></li>
                     </ul>
                 </div>
             </div>
@@ -1365,57 +1395,51 @@
     <section id="tecnologias" class="tech-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Computational Capabilities</span>
-                <h2 class="section-title">Engineering & Simulation Software</h2>
-                <p class="section-subtitle">Utilizing industry-standard numerical software for subsea product analysis
-                    and optimization.</p>
+                <span class="section-tag" data-i18n="tech_tag">Computational Capabilities</span>
+                <h2 class="section-title" data-i18n="tech_title">Engineering & Simulation Software</h2>
+                <p class="section-subtitle" data-i18n="tech_subtitle">Utilizing industry-standard numerical software for subsea product analysis and optimization.</p>
             </div>
 
             <div class="tech-grid">
 
                 <div class="tech-card">
                     <div class="tech-name">
-                        <span>Automation & Data Science</span>
+                        <span data-i18n="tech1_name">Automation & Data Science</span>
                         <span class="tech-badge">Python</span>
                     </div>
-                    <p class="tech-desc">Automation of repetitive engineering tasks, data processing, and numerical
-                        calculations.</p>
+                    <p class="tech-desc" data-i18n="tech1_desc">Automation of repetitive engineering tasks, data processing, and numerical calculations.</p>
                 </div>
 
                 <div class="tech-card">
                     <div class="tech-name">
-                        <span>Hydrodynamics</span>
+                        <span data-i18n="tech2_name">Hydrodynamics</span>
                         <span class="tech-badge">OrcaFlex</span>
                     </div>
-                    <p class="tech-desc">Global static and dynamic analysis of umbilicals, dynamic cables for Floating
-                        Wind, and Cable Protection Systems (CPS).</p>
+                    <p class="tech-desc" data-i18n="tech2_desc">Global static and dynamic analysis of umbilicals, dynamic cables for Floating Wind, and Cable Protection Systems (CPS).</p>
                 </div>
 
                 <div class="tech-card">
                     <div class="tech-name">
-                        <span>Multiphysics</span>
+                        <span data-i18n="tech3_name">Multiphysics</span>
                         <span class="tech-badge">COMSOL</span>
                     </div>
-                    <p class="tech-desc">Coupled electromagnetic and thermal modeling for high-voltage cables according
-                        to CIGRE TB 880 recommendations.</p>
+                    <p class="tech-desc" data-i18n="tech3_desc">Coupled electromagnetic and thermal modeling for high-voltage cables according to CIGRE TB 880 recommendations.</p>
                 </div>
 
                 <div class="tech-card">
                     <div class="tech-name">
-                        <span>Ansys / Abaqus</span>
+                        <span data-i18n="tech4_name">Ansys / Abaqus</span>
                         <span class="tech-badge">Advanced FEA</span>
                     </div>
-                    <p class="tech-desc">Non-linear structural simulation of cable components, termination accessories,
-                        and crushing behavior.</p>
+                    <p class="tech-desc" data-i18n="tech4_desc">Non-linear structural simulation of cable components, termination accessories, and crushing behavior.</p>
                 </div>
 
                 <div class="tech-card">
                     <div class="tech-name">
-                        <span>3D CAD</span>
+                        <span data-i18n="tech5_name">3D CAD</span>
                         <span class="tech-badge">SolidWorks / Onshape</span>
                     </div>
-                    <p class="tech-desc">Detailed 3D modeling of complex assemblies, connectors, and accessories for
-                        umbilicals and power cables using SolidWorks and cloud-native Onshape.</p>
+                    <p class="tech-desc" data-i18n="tech5_desc">Detailed 3D modeling of complex assemblies, connectors, and accessories for umbilicals and power cables using SolidWorks and cloud-native Onshape.</p>
                 </div>
             </div>
         </div>
@@ -1433,7 +1457,7 @@
                         <img src="auxiliar/Olaf_Otte.JPG" alt="Olaf Otte" class="bio-avatar-img">
                     </div>
                     <h3 class="bio-name">Olaf Otte</h3>
-                    <p class="bio-role">Mechanical Engineer | Principal Consultant & Owner</p>
+                    <p class="bio-role" data-i18n="bio_role">Mechanical Engineer | Principal Consultant & Owner</p>
 
                     <ul class="bio-info-list">
                         <li class="bio-info-item">
@@ -1443,7 +1467,7 @@
                                 <path
                                     d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                             </svg>
-                            <span>Degree: <strong>UFSC (B.Sc. Mechanical Engineering)</strong></span>
+                            <span data-i18n="bio_degree" data-i18n-html="true">Degree: <strong>UFSC (B.Sc. Mechanical Engineering)</strong></span>
                         </li>
                         <li class="bio-info-item">
                             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
@@ -1451,7 +1475,7 @@
                                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
                                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                             </svg>
-                            <span>Committee: <strong>CIGRE WG B1.63 (TB 862)</strong></span>
+                            <span data-i18n="bio_committee" data-i18n-html="true">Committee: <strong>CIGRE WG B1.63 (TB 862)</strong></span>
                         </li>
                         <li class="bio-info-item">
                             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
@@ -1461,8 +1485,7 @@
                                 <path
                                     d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                             </svg>
-                            <span>Languages: <strong>Portuguese (Native), English (Fluent), Italian (Fluent), German
-                                    (Basic)</strong></span>
+                            <span data-i18n="bio_languages" data-i18n-html="true">Languages: <strong>Portuguese (Native), English (Fluent), Italian (Fluent), German (Basic)</strong></span>
                         </li>
                     </ul>
 
@@ -1485,14 +1508,14 @@
 
                 <!-- Right Bio Experience -->
                 <div class="bio-content">
-                    <span class="section-tag">Technical Leadership</span>
-                    <h3>Solid International Track Record in Offshore Engineering</h3>
-                    <p>
+                    <span class="section-tag" data-i18n="bio_tag">Technical Leadership</span>
+                    <h3 data-i18n="bio_title">Solid International Track Record in Offshore Engineering</h3>
+                    <p data-i18n="bio_p1" data-i18n-html="true">
                         <strong>Dreio Engineering</strong> combines the flexibility and agility of an independent
                         consultancy with technical expertise gained in major European R&D centers and global cable
                         manufacturing plants.
                     </p>
-                    <p>
+                    <p data-i18n="bio_p2">
                         With hands-on experience developing products and managing major offshore energy projects in
                         Europe and South America, the company provides precise diagnostics and unbiased engineering
                         statements to maximize energy asset performance and reliability.
@@ -1500,27 +1523,21 @@
 
                     <div class="experience-timeline">
                         <div class="exp-item">
-                            <div class="exp-title">Owner & Principal Consultant — Dreio Engenharia LTDA</div>
-                            <div class="exp-sub">Mar 2022 – Present | Blumenau (Brazil)</div>
-                            <div class="exp-desc">Engineering consultancy for global renewable energy developers,
-                                supporting HV submarine cables, floating wind developments, employer requirements
-                                writing and technical contract claims.</div>
+                            <div class="exp-title" data-i18n="exp1_title">Owner & Principal Consultant — Dreio Engenharia LTDA</div>
+                            <div class="exp-sub" data-i18n="exp1_sub">Mar 2022 – Present | Blumenau (Brazil)</div>
+                            <div class="exp-desc" data-i18n="exp1_desc">Engineering consultancy for global renewable energy developers, supporting HV submarine cables, floating wind developments, employer requirements writing and technical contract claims.</div>
                         </div>
 
                         <div class="exp-item">
-                            <div class="exp-title">System Engineer / Product Manager — Prysmian Powerlink</div>
-                            <div class="exp-sub">May 2016 – Jan 2021 | Milan (Italy)</div>
-                            <div class="exp-desc">Designer of extruded Medium, High, and Extra High Voltage cables
-                                (AC/DC). Product Management focused on deepwater HVDC links and dynamic MVAC cables for
-                                floating wind.</div>
+                            <div class="exp-title" data-i18n="exp2_title">System Engineer / Product Manager — Prysmian Powerlink</div>
+                            <div class="exp-sub" data-i18n="exp2_sub">May 2016 – Jan 2021 | Milan (Italy)</div>
+                            <div class="exp-desc" data-i18n="exp2_desc">Designer of extruded Medium, High, and Extra High Voltage cables (AC/DC). Product Management focused on deepwater HVDC links and dynamic MVAC cables for floating wind.</div>
                         </div>
 
                         <div class="exp-item">
-                            <div class="exp-title">Senior Project Engineer — Prysmian Group</div>
-                            <div class="exp-sub">May 2012 – Apr 2016 | Vila Velha (Brazil)</div>
-                            <div class="exp-desc">Project engineering with dynamic subsea umbilicals for the Brazilian
-                                O&G market. R&D in cable design, testing, and advanced simulation in OrcaFlex, Ansys,
-                                and Abaqus.</div>
+                            <div class="exp-title" data-i18n="exp3_title">Senior Project Engineer — Prysmian Group</div>
+                            <div class="exp-sub" data-i18n="exp3_sub">May 2012 – Apr 2016 | Vila Velha (Brazil)</div>
+                            <div class="exp-desc" data-i18n="exp3_desc">Project engineering with dynamic subsea umbilicals for the Brazilian O&G market. R&D in cable design, testing, and advanced simulation in OrcaFlex, Ansys, and Abaqus.</div>
                         </div>
                     </div>
                 </div>
@@ -1534,51 +1551,46 @@
     <section id="publicacoes">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Research & Publications</span>
-                <h2 class="section-title">Publications & International Contributions</h2>
-                <p class="section-subtitle">Continuous commitment to knowledge generation and standardization in global
-                    subsea engineering.</p>
+                <span class="section-tag" data-i18n="pub_tag">Research & Publications</span>
+                <h2 class="section-title" data-i18n="pub_title">Publications & International Contributions</h2>
+                <p class="section-subtitle" data-i18n="pub_subtitle">Continuous commitment to knowledge generation and standardization in global subsea engineering.</p>
             </div>
 
             <div class="pub-grid">
                 <div class="pub-card">
                     <span class="pub-badge">CIGRE 2022</span>
-                    <h4 class="pub-card-title">TB 862 - Recommendations for mechanical testing of submarine cables for
-                        dynamic applications</h4>
-                    <span class="pub-venue-info">CIGRE Working Group B1.63 Brochure</span>
+                    <h4 class="pub-card-title" data-i18n="pub1_title">TB 862 - Recommendations for mechanical testing of submarine cables for dynamic applications</h4>
+                    <span class="pub-venue-info" data-i18n="pub1_venue">CIGRE Working Group B1.63 Brochure</span>
                 </div>
 
                 <div class="pub-card">
                     <span class="pub-badge">JICABLE 2019</span>
-                    <h4 class="pub-card-title">Light armour cables for submarine deepwater power application</h4>
-                    <span class="pub-venue-info">International Conference on Insulated Power Cables</span>
+                    <h4 class="pub-card-title" data-i18n="pub2_title">Light armour cables for submarine deepwater power application</h4>
+                    <span class="pub-venue-info" data-i18n="pub2_venue">International Conference on Insulated Power Cables</span>
                 </div>
 
                 <div class="pub-card">
                     <span class="pub-badge">OMAE 2017</span>
-                    <h4 class="pub-card-title">An Integrated Environment for Design and Analysis of Umbilical Cables
-                    </h4>
-                    <span class="pub-venue-info">Ocean, Offshore and Arctic Engineering Conference</span>
+                    <h4 class="pub-card-title" data-i18n="pub3_title">An Integrated Environment for Design and Analysis of Umbilical Cables</h4>
+                    <span class="pub-venue-info" data-i18n="pub_omae_venue">Ocean, Offshore and Arctic Engineering Conference</span>
                 </div>
 
                 <div class="pub-card">
                     <span class="pub-badge">OMAE 2016</span>
-                    <h4 class="pub-card-title">An experimental assessment on umbilical cable crushing using digital
-                        image correlation</h4>
-                    <span class="pub-venue-info">Ocean, Offshore and Arctic Engineering Conference</span>
+                    <h4 class="pub-card-title" data-i18n="pub4_title">An experimental assessment on umbilical cable crushing using digital image correlation</h4>
+                    <span class="pub-venue-info" data-i18n="pub_omae_venue">Ocean, Offshore and Arctic Engineering Conference</span>
                 </div>
 
                 <div class="pub-card">
                     <span class="pub-badge">OMAE 2015</span>
-                    <h4 class="pub-card-title">Flexible Pipe Anchoring System: Resin Ratio Effects on Mechanical
-                        Properties</h4>
-                    <span class="pub-venue-info">Ocean, Offshore and Arctic Engineering Conference</span>
+                    <h4 class="pub-card-title" data-i18n="pub5_title">Flexible Pipe Anchoring System: Resin Ratio Effects on Mechanical Properties</h4>
+                    <span class="pub-venue-info" data-i18n="pub_omae_venue">Ocean, Offshore and Arctic Engineering Conference</span>
                 </div>
 
                 <div class="pub-card">
                     <span class="pub-badge">COBEM 2009</span>
-                    <h4 class="pub-card-title">Numerical simulation of a ceramic kiln for glass melting process</h4>
-                    <span class="pub-venue-info">International Congress of Mechanical Engineering</span>
+                    <h4 class="pub-card-title" data-i18n="pub6_title">Numerical simulation of a ceramic kiln for glass melting process</h4>
+                    <span class="pub-venue-info" data-i18n="pub6_venue">International Congress of Mechanical Engineering</span>
                 </div>
             </div>
         </div>
@@ -1592,11 +1604,10 @@
             <div class="contact-grid">
                 <!-- Info Column -->
                 <div class="contact-info-card">
-                    <span class="section-tag">Direct Contact</span>
-                    <h2 style="font-size: 2.2rem; color: #FFFFFF; margin-bottom: 16px;">Let's discuss your project</h2>
-                    <p style="color: var(--text-muted); line-height: 1.6;">
-                        Get in touch to discuss how Dreio Engineering can bring technical rigor, cost optimization, and
-                        asset reliability to your offshore projects.
+                    <span class="section-tag" data-i18n="contact_tag">Direct Contact</span>
+                    <h2 style="font-size: 2.2rem; color: #FFFFFF; margin-bottom: 16px;" data-i18n="contact_title">Let's discuss your project</h2>
+                    <p style="color: var(--text-muted); line-height: 1.6;" data-i18n="contact_desc">
+                        Get in touch to discuss how Dreio Engineering can bring technical rigor, cost optimization, and asset reliability to your offshore projects.
                     </p>
 
                     <div class="contact-methods">
@@ -1604,7 +1615,7 @@
                             class="contact-method-item">
                             <div class="method-icon">✉️</div>
                             <div class="method-text">
-                                <label>Direct Email</label>
+                                <label data-i18n="contact_email_label">Direct Email</label>
                                 <span>dreio.eng@gmail.com</span>
                             </div>
                         </a>
@@ -1612,7 +1623,7 @@
                         <a href="https://wa.me/5547996303851" target="_blank" class="contact-method-item">
                             <div class="method-icon">📱</div>
                             <div class="method-text">
-                                <label>WhatsApp / Phone</label>
+                                <label data-i18n="contact_phone_label">WhatsApp / Phone</label>
                                 <span>+55 (47) 99630-3851</span>
                             </div>
                         </a>
@@ -1620,16 +1631,16 @@
                         <div class="contact-method-item">
                             <div class="method-icon">📍</div>
                             <div class="method-text">
-                                <label>Location</label>
-                                <span>Blumenau, SC – Brazil (Global Outreach)</span>
+                                <label data-i18n="contact_loc_label">Location</label>
+                                <span data-i18n="contact_loc_val">Blumenau, SC – Brazil (Global Outreach)</span>
                             </div>
                         </div>
 
                         <a href="https://www.linkedin.com/in/olaf-otte/" target="_blank" class="contact-method-item">
                             <div class="method-icon">🔗</div>
                             <div class="method-text">
-                                <label>LinkedIn</label>
-                                <span>Connect with Olaf Otte</span>
+                                <label data-i18n="contact_li_label">LinkedIn</label>
+                                <span data-i18n="contact_li_val">Connect with Olaf Otte</span>
                             </div>
                         </a>
                     </div>
@@ -1637,36 +1648,35 @@
 
                 <!-- Interactive Form Column -->
                 <div class="contact-form-box">
-                    <h3 style="font-size: 1.5rem; color: #FFFFFF; margin-bottom: 24px;">Request a Technical Proposal
-                    </h3>
+                    <h3 style="font-size: 1.5rem; color: #FFFFFF; margin-bottom: 24px;" data-i18n="form_title">Request a Technical Proposal</h3>
 
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                            <label for="name" data-i18n="form_name_label">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Your name" data-i18n-ph="form_name_ph" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Work Email</label>
-                            <input type="email" id="email" class="form-input" placeholder="you@company.com" required>
+                            <label for="email" data-i18n="form_email_label">Work Email</label>
+                            <input type="email" id="email" class="form-input" placeholder="you@company.com" data-i18n-ph="form_email_ph" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="company">Company / Organization</label>
-                            <input type="text" id="company" class="form-input" placeholder="Company name">
+                            <label for="company" data-i18n="form_company_label">Company / Organization</label>
+                            <input type="text" id="company" class="form-input" placeholder="Company name" data-i18n-ph="form_company_ph">
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Project Brief & Requirements</label>
+                            <label for="message" data-i18n="form_msg_label">Project Brief & Requirements</label>
                             <textarea id="message" class="form-textarea"
-                                placeholder="Briefly describe your project or inquiry..." required></textarea>
+                                placeholder="Briefly describe your project or inquiry..." data-i18n-ph="form_msg_ph" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;" data-i18n="form_submit">
                             Send Consulting Request
                         </button>
 
-                        <div class="form-success-msg" id="formSuccess">
+                        <div class="form-success-msg" id="formSuccess" data-i18n="form_success">
                             ✓ Message prepared! Redirecting to email...
                         </div>
                     </form>
@@ -1685,10 +1695,10 @@
                     style="font-family: var(--font-display); font-weight: 800; color: #FFFFFF; font-size: 1.1rem; letter-spacing: 0.5px;">DREIO
                     ENGINEERING</span>
                 <span>•</span>
-                <span>© 2026 Dreio Engenharia LTDA. All rights reserved.</span>
+                <span data-i18n="footer_rights">© 2026 Dreio Engenharia LTDA. All rights reserved.</span>
             </div>
             <div>
-                <span>Independent Subsea & Renewable Energy Engineering Consultancy</span>
+                <span data-i18n="footer_tagline">Independent Subsea & Renewable Energy Engineering Consultancy</span>
             </div>
         </div>
     </footer>
@@ -1724,6 +1734,308 @@
             }, 800);
         });
     </script>
+
+    <!-- Internationalization (i18n) Engine -->
+    <script>
+        const translations = {
+            en: {
+                meta_title: "Dreio Engineering | Submarine HV Cables & Offshore Renewable Energy Consulting",
+                meta_desc: "Independent technical consultancy in Offshore Engineering, Submarine HV/HVDC Cables, Floating Wind, and Multiphysics Simulation (OrcaFlex, COMSOL, Ansys). Led by Olaf Otte.",
+                nav_services: "Services",
+                nav_tech: "Software & FEA",
+                nav_about: "About",
+                nav_pub: "Publications",
+                nav_contact: "Contact",
+                nav_cta: "Request Consulting",
+                
+                hero_badge: "Specialized Offshore & Subsea Engineering",
+                hero_title: "Engineering for <span>Submarine HV Cable Systems</span>",
+                hero_desc: "Independent technical consultancy delivering solutions in High Voltage cables (HV/HVDC/MVAC), Floating Offshore Wind, multiphysics simulation, and subsea asset integrity.",
+                hero_wa: "Contact via WhatsApp",
+                hero_wa_msg: "Hello,%20I%20would%20like%20to%20request%20a%20technical%20consultation%20with%20Dreio%20Engineering.",
+                hero_explore: "Explore Services",
+                hero_card_tag: "Track Record & Capabilities",
+                
+                track1_title: "Offshore Wind Technical Support",
+                track1_desc: "Drafting technical specifications, legal claims support, ROV & MBES survey data reviews, and CPS integrity for offshore wind farm Developers.",
+                track2_title: "CIGRE WG B1.63 Member (TB 862)",
+                track2_desc: "Co-authorship of international recommendations for mechanical testing of submarine cables in dynamic applications.",
+                track3_title: "International Track Record (Italy & Brazil)",
+                track3_desc: "Product management and R&D at Prysmian for deepwater HVDC links and subsea umbilicals.",
+                clients_title: "Experience with Industry Leaders:",
+                
+                services_tag: "Specialties",
+                services_title: "Specialized Engineering Services",
+                services_subtitle: "Independent, technical support across the entire lifecycle of subsea power transmission and renewable assets.",
+                service1_title: "Submarine Cable Engineering & EPCI",
+                service1_desc: "Independent drafting and review of technical specifications for offshore EPCI tenders and contracts.",
+                service1_l1: "Independent engineering statements for in-service cables.",
+                service1_l2: "Field survey data review (ROV video footage, MBES, and monitoring data).",
+                service1_l3: "Contractor management for CPS re-assessment and support with Legal Claims.",
+                
+                service2_title: "Advanced Multiphysics Modeling & FEA",
+                service2_desc: "Advanced numerical modeling to determine thermal, electrical, and mechanical operational limits of subsea cables and accessories.",
+                service2_l1: "Hydrodynamic, static, and dynamic global analysis in OrcaFlex.",
+                service2_l2: "Coupled electromagnetic and thermal modeling in COMSOL (CIGRE TB 880).",
+                service2_l3: "Finite Element Analysis (FEA) in Ansys and Abaqus for umbilicals and accessories.",
+                
+                service3_title: "R&D, Qualification & Floating Wind",
+                service3_desc: "Research, development, and strategic advisory for dynamic high-voltage applications in deep and ultra-deep waters.",
+                service3_l1: "Preliminary technical feasibility studies (Desktop Studies) for floating wind.",
+                service3_l2: "Supplier technical qualification and factory audit processes.",
+                service3_l3: "Failure root-cause analysis and laboratory test specification.",
+                
+                tech_tag: "Computational Capabilities",
+                tech_title: "Engineering & Simulation Software",
+                tech_subtitle: "Utilizing industry-standard numerical software for subsea product analysis and optimization.",
+                tech1_name: "Automation & Data Science",
+                tech1_desc: "Automation of repetitive engineering tasks, data processing, and numerical calculations.",
+                tech2_name: "Hydrodynamics",
+                tech2_desc: "Global static and dynamic analysis of umbilicals, dynamic cables for Floating Wind, and Cable Protection Systems (CPS).",
+                tech3_name: "Multiphysics",
+                tech3_desc: "Coupled electromagnetic and thermal modeling for high-voltage cables according to CIGRE TB 880 recommendations.",
+                tech4_name: "Ansys / Abaqus",
+                tech4_desc: "Non-linear structural simulation of cable components, termination accessories, and crushing behavior.",
+                tech5_name: "3D CAD",
+                tech5_desc: "Detailed 3D modeling of complex assemblies, connectors, and accessories for umbilicals and power cables using SolidWorks and cloud-native Onshape.",
+                
+                bio_role: "Mechanical Engineer | Principal Consultant & Owner",
+                bio_degree: "Degree: <strong>UFSC (B.Sc. Mechanical Engineering)</strong>",
+                bio_committee: "Committee: <strong>CIGRE WG B1.63 (TB 862)</strong>",
+                bio_languages: "Languages: <strong>Portuguese (Native), English (Fluent), Italian (Fluent), German (Basic)</strong>",
+                bio_tag: "Technical Leadership",
+                bio_title: "Solid International Track Record in Offshore Engineering",
+                bio_p1: "<strong>Dreio Engineering</strong> combines the flexibility and agility of an independent consultancy with technical expertise gained in major European R&D centers and global cable manufacturing plants.",
+                bio_p2: "With hands-on experience developing products and managing major offshore energy projects in Europe and South America, the company provides precise diagnostics and unbiased engineering statements to maximize energy asset performance and reliability.",
+                exp1_title: "Owner & Principal Consultant — Dreio Engenharia LTDA",
+                exp1_sub: "Mar 2022 – Present | Blumenau (Brazil)",
+                exp1_desc: "Engineering consultancy for global renewable energy developers, supporting HV submarine cables, floating wind developments, employer requirements writing and technical contract claims.",
+                exp2_title: "System Engineer / Product Manager — Prysmian Powerlink",
+                exp2_sub: "May 2016 – Jan 2021 | Milan (Italy)",
+                exp2_desc: "Designer of extruded Medium, High, and Extra High Voltage cables (AC/DC). Product Management focused on deepwater HVDC links and dynamic MVAC cables for floating wind.",
+                exp3_title: "Senior Project Engineer — Prysmian Group",
+                exp3_sub: "May 2012 – Apr 2016 | Vila Velha (Brazil)",
+                exp3_desc: "Project engineering with dynamic subsea umbilicals for the Brazilian O&G market. R&D in cable design, testing, and advanced simulation in OrcaFlex, Ansys, and Abaqus.",
+                
+                pub_tag: "Research & Publications",
+                pub_title: "Publications & International Contributions",
+                pub_subtitle: "Continuous commitment to knowledge generation and standardization in global subsea engineering.",
+                pub1_title: "TB 862 - Recommendations for mechanical testing of submarine cables for dynamic applications",
+                pub1_venue: "CIGRE Working Group B1.63 Brochure",
+                pub2_title: "Light armour cables for submarine deepwater power application",
+                pub2_venue: "International Conference on Insulated Power Cables",
+                pub3_title: "An Integrated Environment for Design and Analysis of Umbilical Cables",
+                pub4_title: "An experimental assessment on umbilical cable crushing using digital image correlation",
+                pub5_title: "Flexible Pipe Anchoring System: Resin Ratio Effects on Mechanical Properties",
+                pub6_title: "Numerical simulation of a ceramic kiln for glass melting process",
+                pub_omae_venue: "Ocean, Offshore and Arctic Engineering Conference",
+                pub6_venue: "International Congress of Mechanical Engineering",
+                
+                contact_tag: "Direct Contact",
+                contact_title: "Let's discuss your project",
+                contact_desc: "Get in touch to discuss how Dreio Engineering can bring technical rigor, cost optimization, and asset reliability to your offshore projects.",
+                contact_email_label: "Direct Email",
+                contact_phone_label: "WhatsApp / Phone",
+                contact_loc_label: "Location",
+                contact_loc_val: "Blumenau, SC – Brazil (Global Outreach)",
+                contact_li_label: "LinkedIn",
+                contact_li_val: "Connect with Olaf Otte",
+                form_title: "Request a Technical Proposal",
+                form_name_label: "Full Name",
+                form_name_ph: "Your name",
+                form_email_label: "Work Email",
+                form_email_ph: "you@company.com",
+                form_company_label: "Company / Organization",
+                form_company_ph: "Company name",
+                form_msg_label: "Project Brief & Requirements",
+                form_msg_ph: "Briefly describe your project or inquiry...",
+                form_submit: "Send Consulting Request",
+                form_success: "✓ Message prepared! Redirecting to email...",
+                
+                footer_rights: "© 2026 Dreio Engenharia LTDA. All rights reserved.",
+                footer_tagline: "Independent Subsea & Renewable Energy Engineering Consultancy"
+            },
+            pt: {
+                meta_title: "Dreio Engineering | Consultoria em Cabos Submarinos AT & Energia Eólica Offshore",
+                meta_desc: "Consultoria técnica independente em Engenharia Offshore, Cabos Submarinos AT/CCAT, Eólica Flutuante e Simulação Multifísica (OrcaFlex, COMSOL, Ansys). Liderada por Olaf Otte.",
+                nav_services: "Serviços",
+                nav_tech: "Softwares & FEA",
+                nav_about: "Sobre",
+                nav_pub: "Publicações",
+                nav_contact: "Contato",
+                nav_cta: "Solicitar Consultoria",
+                
+                hero_badge: "Engenharia Especializada Offshore e Submarina",
+                hero_title: "Engenharia para <span>Sistemas de Cabos Submarinos de Alta Tensão</span>",
+                hero_desc: "Consultoria técnica independente oferecendo soluções em cabos de Alta Tensão (AT/CCAT/ATCA), Eólica Offshore Flutuante, simulação multifísica e integridade de ativos submarinos.",
+                hero_wa: "Contato via WhatsApp",
+                hero_wa_msg: "Olá,%20gostaria%20de%20solicitar%20uma%20consultoria%20técnica%20com%20a%20Dreio%20Engineering.",
+                hero_explore: "Explorar Serviços",
+                hero_card_tag: "Trajetória & Capacidades",
+                
+                track1_title: "Suporte Técnico para Eólica Offshore",
+                track1_desc: "Elaboração de especificações técnicas, suporte a pleitos jurídicos/contratuais, análise de dados ROV/MBES e integridade de CPS para desenvolvedores eólicos.",
+                track2_title: "Membro do CIGRE WG B1.63 (TB 862)",
+                track2_desc: "Coautoria de recomendações internacionais para ensaios mecânicos de cabos submarinos em aplicações dinâmicas.",
+                track3_title: "Experiência Internacional (Itália & Brasil)",
+                track3_desc: "Gestão de produtos e P&D na Prysmian em conexões CCAT de águas profundas e umbilicais submarinos.",
+                clients_title: "Experiência com Líderes da Indústria:",
+                
+                services_tag: "Especialidades",
+                services_title: "Serviços Especializados de Engenharia",
+                services_subtitle: "Suporte técnico independente em todo o ciclo de vida da transmissão de energia submarina e ativos renováveis.",
+                service1_title: "Engenharia de Cabos Submarinos & EPCI",
+                service1_desc: "Elaboração e revisão independente de especificações técnicas para licitações e contratos EPCI offshore.",
+                service1_l1: "Pareceres técnicos independentes de engenharia para cabos em operação.",
+                service1_l2: "Análise de dados de inspeção de campo (filmagens de ROV, MBES e dados de monitoramento).",
+                service1_l3: "Gestão de fornecedores para reavaliação de CPS e suporte em pleitos contratuais e jurídicos.",
+                
+                service2_title: "Modelagem Multifísica Avançada & FEA",
+                service2_desc: "Modelagem numérica avançada para determinação dos limites operacionais térmicos, elétricos e mecânicos de cabos e acessórios submarinos.",
+                service2_l1: "Análise hidrodinâmica, estática e dinâmica global no OrcaFlex.",
+                service2_l2: "Modelagem acoplada eletromagnética e térmica no COMSOL (CIGRE TB 880).",
+                service2_l3: "Análise por Elementos Finitos (FEA) no Ansys e Abaqus para umbilicais e acessórios.",
+                
+                service3_title: "P&D, Qualificação & Eólica Flutuante",
+                service3_desc: "Pesquisa, desenvolvimento e consultoria estratégica para aplicações dinâmicas de alta tensão em águas profundas e ultraprofundas.",
+                service3_l1: "Estudos preliminares de viabilidade técnica (Desktop Studies) para eólica flutuante.",
+                service3_l2: "Processos de qualificação técnica de fornecedores e auditorias de fábrica.",
+                service3_l3: "Análise de causa raiz de falhas e especificação de ensaios laboratoriais.",
+                
+                tech_tag: "Capacidades Computacionais",
+                tech_title: "Softwares de Engenharia & Simulação",
+                tech_subtitle: "Utilizando softwares numéricos padrão da indústria para análise e otimização de produtos submarinos.",
+                tech1_name: "Automação & Ciência de Dados",
+                tech1_desc: "Automação de tarefas repetitivas de engenharia, processamento de dados e cálculos numéricos.",
+                tech2_name: "Hidrodinâmica",
+                tech2_desc: "Análise estática e dinâmica global de umbilicais, cabos dinâmicos para Eólica Flutuante e Sistemas de Proteção de Cabos (CPS).",
+                tech3_name: "Multifísica",
+                tech3_desc: "Modelagem acoplada eletromagnética e térmica para cabos de alta tensão conforme recomendações da CIGRE TB 880.",
+                tech4_name: "Ansys / Abaqus",
+                tech4_desc: "Simulação estrutural não-linear de componentes de cabos, acessórios de terminação e comportamento ao esmagamento.",
+                tech5_name: "CAD 3D",
+                tech5_desc: "Modelagem 3D detalhada de conjuntos complexos, conectores e acessórios para umbilicais e cabos de potência via SolidWorks e Onshape.",
+                
+                bio_role: "Engenheiro Mecânico | Consultor Principal & Proprietário",
+                bio_degree: "Formação: <strong>UFSC (Engenharia Mecânica)</strong>",
+                bio_committee: "Comitê: <strong>CIGRE WG B1.63 (TB 862)</strong>",
+                bio_languages: "Idiomas: <strong>Português (Nativo), Inglês (Fluente), Italiano (Fluente), Alemão (Básico)</strong>",
+                bio_tag: "Liderança Técnica",
+                bio_title: "Sólida Trajetória Internacional em Engenharia Offshore",
+                bio_p1: "A <strong>Dreio Engineering</strong> combina a flexibilidade e agilidade de uma consultoria independente com a expertise técnica adquirida em grandes centros de P&D europeus e plantas fabris globais de cabos.",
+                bio_p2: "Com experiência prática no desenvolvimento de produtos e gestão de grandes projetos de energia offshore na Europa e América do Sul, a empresa fornece diagnósticos precisos e pareceres isentos de engenharia para maximizar o desempenho e a confiabilidade de ativos de energia.",
+                exp1_title: "Proprietário & Consultor Principal — Dreio Engenharia LTDA",
+                exp1_sub: "Mar 2022 – Presente | Blumenau (Brasil)",
+                exp1_desc: "Consultoria de engenharia para desenvolvedores globais de energia renovável, atuando em cabos submarinos de alta tensão, eólica flutuante, redação de requisitos do contratante e pleitos técnicos contratuais.",
+                exp2_title: "Engenheiro de Sistemas / Gerente de Produto — Prysmian Powerlink",
+                exp2_sub: "Mai 2016 – Jan 2021 | Milão (Itália)",
+                exp2_desc: "Projetista de cabos extrudados de Média, Alta e Extra Alta Tensão (CA/CC). Gestão de produto focada em conexões CCAT de águas profundas e cabos dinâmicos ATCA para eólica flutuante.",
+                exp3_title: "Engenheiro de Projetos Sênior — Prysmian Group",
+                exp3_sub: "Mai 2012 – Abr 2016 | Vila Velha (Brasil)",
+                exp3_desc: "Engenharia de projetos com umbilicais submarinos dinâmicos para o mercado brasileiro de E&P. P&D em projeto de cabos, testes e simulação avançada em OrcaFlex, Ansys e Abaqus.",
+                
+                pub_tag: "Pesquisa & Publicações",
+                pub_title: "Publicações & Contribuições Internacionais",
+                pub_subtitle: "Compromisso contínuo com a geração de conhecimento e normatização na engenharia submarina global.",
+                pub1_title: "TB 862 - Recomendações para testes mecânicos de cabos submarinos para aplicações dinâmicas",
+                pub1_venue: "Brochura do Grupo de Trabalho CIGRE B1.63",
+                pub2_title: "Cabos de armadura leve para aplicações de potência em águas profundas submarinas",
+                pub2_venue: "Conferência Internacional de Cabos elétricos Isolados de Potência",
+                pub3_title: "Um Ambiente Integrado para Projeto e Análise de Cabos Umbilicais",
+                pub4_title: "Uma avaliação experimental sobre o esmagamento de cabos umbilicais usando correlação digital de imagens",
+                pub5_title: "Sistema de Ancoragem de Tubos Flexíveis: Efeitos da Razão de Resina nas Propriedades Mecânicas",
+                pub6_title: "Simulação numérica de um forno cerâmico para processo de fusão de vidro",
+                pub_omae_venue: "Conferência de Engenharia Oceânica, Offshore e Ártica",
+                pub6_venue: "Congresso Internacional de Engenharia Mecânica",
+                
+                contact_tag: "Contato Direto",
+                contact_title: "Vamos conversar sobre o seu projeto",
+                contact_desc: "Entre em contato para discutir como a Dreio Engineering pode trazer rigor técnico, otimização de custos e confiabilidade de ativos aos seus projetos offshore.",
+                contact_email_label: "E-mail Direto",
+                contact_phone_label: "WhatsApp / Telefone",
+                contact_loc_label: "Localização",
+                contact_loc_val: "Blumenau, SC – Brasil (Atendimento Global)",
+                contact_li_label: "LinkedIn",
+                contact_li_val: "Conecte-se com Olaf Otte",
+                form_title: "Solicite uma Proposta Técnica",
+                form_name_label: "Nome Completo",
+                form_name_ph: "Seu nome",
+                form_email_label: "E-mail Profissional",
+                form_email_ph: "voce@empresa.com",
+                form_company_label: "Empresa / Organização",
+                form_company_ph: "Nome da empresa",
+                form_msg_label: "Resumo do Projeto & Requisitos",
+                form_msg_ph: "Descreva resumidamente seu projeto ou necessidade...",
+                form_submit: "Enviar Solicitação de Consultoria",
+                form_success: "✓ Mensagem preparada! Redirecionando para o e-mail...",
+                
+                footer_rights: "© 2026 Dreio Engenharia LTDA. Todos os direitos reservados.",
+                footer_tagline: "Consultoria Independente de Engenharia Submarina e Energia Renovável"
+            }
+        };
+
+        function getInitialLanguage() {
+            const saved = localStorage.getItem('dreio_lang');
+            if (saved === 'en' || saved === 'pt') return saved;
+            
+            // Detect OS / Browser language
+            const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            return userLang.startsWith('pt') ? 'pt' : 'en';
+        }
+
+        function setLanguage(lang) {
+            if (!translations[lang]) return;
+            localStorage.setItem('dreio_lang', lang);
+            
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            
+            // Update Meta Title & Description
+            document.title = translations[lang].meta_title;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', translations[lang].meta_desc);
+
+            // Update Active Class on Language Switcher Buttons
+            const btnEN = document.getElementById('langEN');
+            const btnPT = document.getElementById('langPT');
+            if (btnEN && btnPT) {
+                btnEN.classList.toggle('active', lang === 'en');
+                btnPT.classList.toggle('active', lang === 'pt');
+            }
+
+            // Update Text Content or HTML for data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key] !== undefined) {
+                    if (el.getAttribute('data-i18n-html') === 'true') {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update Placeholders
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (translations[lang][key] !== undefined) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+
+            // Update WhatsApp link text message parameter
+            const waBtn = document.getElementById('waBtn');
+            if (waBtn && translations[lang].hero_wa_msg) {
+                waBtn.href = `https://wa.me/5547996303851?text=${translations[lang].hero_wa_msg}`;
+            }
+        }
+
+        // Initialize Language on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLang = getInitialLanguage();
+            setLanguage(currentLang);
+        });
+    </script>
 </body>
+
 
 </html>
