@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 900">
+    <g transform="translate(-50, 0)">
+        <path d="M100 414C100 205 269 36 478 36C686 36 856 205 856 414C856 622 686 792 478 792C269 792 100 622 100 414Z" stroke="#00F2FE" stroke-width="54" fill="none" />
+        <path d="M100 413C100 256 226 130 383 130C540 130 667 256 667 413C667 570 540 697 383 697C226 697 100 570 100 413Z" stroke="#38BDF8" stroke-width="54" fill="none" />
+        <path d="M100 414C100 309 184 225 289 225C393 225 478 309 478 414C478 518 393 603 289 603C184 603 100 518 100 414Z" stroke="#4F46E5" stroke-width="54" fill="none" />
+    </g>
+</svg>
